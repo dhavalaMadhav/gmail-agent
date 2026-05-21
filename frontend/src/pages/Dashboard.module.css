@@ -1,0 +1,40 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  overflow: hidden;
+  position: relative;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - var(--header-h));
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Middle viewer container containing the EmailView */
+.viewer {
+  flex: 1;
+  height: 100%;
+  background-color: var(--bg-base);
+  border-right: 1px solid var(--border-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat container which slides open and closed */
+.chatWrapper {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-surface);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
