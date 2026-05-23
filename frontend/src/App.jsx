@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard';
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://gmail-agent-backend-fu57.onrender.com//',
+  baseURL: 'https://gmail-agent-backend-fu57.onrender.com',
   withCredentials: true,
 });
 

@@ -8,15 +8,15 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/auth': {
-        target: 'https://gmail-agent-backend-fu57.onrender.com//',
+        target: 'https://gmail-agent-backend-fu57.onrender.com',
         changeOrigin: true,
       },
       '/gmail': {
-        target: 'https://gmail-agent-backend-fu57.onrender.com//',
+        target: 'https://gmail-agent-backend-fu57.onrender.com',
         changeOrigin: true,
       },
       '/agent': {
-        target: 'https://gmail-agent-backend-fu57.onrender.com//',
+        target: 'https://gmail-agent-backend-fu57.onrender.com',
         changeOrigin: true,
       },
     },
