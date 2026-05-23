@@ -11,7 +11,7 @@ const features = [
 
 export default function Login() {
   const handleLogin = () => {
-    window.location.href = 'https://gmail-agent-backend-fu57.onrender.com//auth/google';
+    window.location.href = 'https://gmail-agent-backend-fu57.onrender.com///auth/google';
   };
 
   return (
