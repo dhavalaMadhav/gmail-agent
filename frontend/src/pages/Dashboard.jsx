@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [loadingEmails, setLoadingEmails] = useState(true);
   const [activeLabel, setActiveLabel] = useState('INBOX');
-  const [chatOpen, setChatOpen] = useState(true);
+  const [chatOpen, setChatOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const fetchEmails = async (label = 'INBOX', q = '') => {

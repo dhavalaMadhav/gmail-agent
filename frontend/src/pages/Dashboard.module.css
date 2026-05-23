@@ -175,8 +175,7 @@
     right: 0;
     height: 100%;
     width: 100% !important; /* Take full viewport width */
-    z-index: 48;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+    z-index: 60 !important; /* Higher than toggle arrow button (z-index 50) */
   }
 
   /* Floating trigger button in bottom right */
@@ -194,14 +193,12 @@
     justify-content: center;
     z-index: 40;
     border: none;
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4), 0 0 10px rgba(59, 130, 246, 0.2);
     cursor: pointer;
     transition: all 0.2s ease;
   }
 
   .floatingChatBtn:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 25px rgba(59, 130, 246, 0.6), 0 0 15px rgba(59, 130, 246, 0.3);
   }
 }
 
