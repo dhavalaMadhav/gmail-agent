@@ -103,7 +103,7 @@ function Message({ msg }) {
   );
 }
 
-export default function AgentChat({ context, onActionComplete }) {
+export default function AgentChat({ context, onActionComplete, onClose }) {
   const [messages, setMessages] = useState([
     {
       role: 'agent',
@@ -192,9 +192,16 @@ export default function AgentChat({ context, onActionComplete }) {
           <span>AI Agent</span>
           <span className="badge badge-purple">Core v2</span>
         </div>
-        <button id="clear-chat-btn" className={styles.clearBtn} onClick={clearChat} title="Clear chat">
-          <RotateCcw size={14} />
-        </button>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button id="clear-chat-btn" className={styles.clearBtn} onClick={clearChat} title="Clear chat">
+            <RotateCcw size={14} />
+          </button>
+          {onClose && (
+            <button className={styles.closeBtn} onClick={onClose} title="Close AI Agent">
+              <span style={{ fontSize: '20px', fontWeight: 'normal', lineHeight: '14px', display: 'block' }}>&times;</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Sleek flat monochromatic System Status segment */}

@@ -296,3 +296,29 @@
   color: var(--accent-primary);
   background: rgba(59, 130, 246, 0.08);
 }
+
+@media (max-width: 768px) {
+  .viewer {
+    padding: 16px !important;
+  }
+  .subject {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+  }
+  .meta {
+    gap: 8px 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .bodyText {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+  }
+  .summaryBox {
+    padding: 14px !important;
+    margin-bottom: 20px !important;
+  }
+  .header {
+    padding-bottom: 16px !important;
+    margin-bottom: 16px !important;
+  }
+}

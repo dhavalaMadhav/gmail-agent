@@ -214,3 +214,17 @@
   border-radius: 50%;
   background-color: #FFFFFF;
 }
+
+@media (max-width: 768px) {
+  .list {
+    width: 100% !important;
+  }
+  .empty {
+    width: 100% !important;
+  }
+  .item {
+    padding: 16px 20px !important;
+    min-height: 110px !important;
+    gap: 12px !important;
+  }
+}

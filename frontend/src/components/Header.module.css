@@ -87,6 +87,10 @@
   color: var(--accent-primary);
 }
 
+.mobileChatBtn {
+  display: none;
+}
+
 /* User Profile Menu block */
 .userMenu {
   display: flex;
@@ -123,4 +127,41 @@
   color: var(--text-secondary);
   margin: 0;
   line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px !important;
+  }
+  .brand {
+    display: none !important;
+  }
+  .mobileChatBtn {
+    display: flex !important;
+  }
+  .desktopChatBtn {
+    display: none !important;
+  }
+  .onlineRow {
+    display: none !important;
+  }
+  .userInfo {
+    display: none !important;
+  }
+  .logoutBtn {
+    display: flex !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-secondary) !important;
+  }
+  .userMenu {
+    border-left: none !important;
+    padding-left: 0 !important;
+    gap: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
 }

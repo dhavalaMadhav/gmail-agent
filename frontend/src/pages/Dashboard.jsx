@@ -6,6 +6,7 @@ import EmailView from '../components/EmailView';
 import AgentChat from '../components/AgentChat';
 import { API } from '../App';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import styles from './Dashboard.module.css';
 
 export default function Dashboard() {
@@ -14,6 +15,7 @@ export default function Dashboard() {
   const [loadingEmails, setLoadingEmails] = useState(true);
   const [activeLabel, setActiveLabel] = useState('INBOX');
   const [chatOpen, setChatOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const fetchEmails = async (label = 'INBOX', q = '') => {
     setLoadingEmails(true);
@@ -68,23 +70,48 @@ export default function Dashboard() {
       <Header onToggleChat={() => setChatOpen((o) => !o)} chatOpen={chatOpen} />
 
       <div className={styles.body}>
-        {/* Sidebar */}
-        <Sidebar
-          activeLabel={activeLabel}
-          onLabelChange={(label) => setActiveLabel(label)}
-          onSearch={(q) => fetchEmails(activeLabel, q)}
-        />
+        {/* Sidebar Toggle Button (Mobile only) */}
+        <button
+          className={`${styles.sidebarToggleBtn} ${sidebarOpen ? styles.sidebarOpen : ''}`}
+          onClick={() => setSidebarOpen((open) => !open)}
+          aria-label={sidebarOpen ? 'Close sidebar' : 'Open sidebar'}
+        >
+          {sidebarOpen ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
+        </button>
 
-        {/* Email list */}
-        <EmailList
-          emails={emails}
-          loading={loadingEmails}
-          selectedId={selectedEmail?.id}
-          onSelect={handleSelectEmail}
-        />
+        {/* Sidebar Container */}
+        <div className={`${styles.sidebarContainer} ${sidebarOpen ? styles.sidebarVisible : ''}`}>
+          <Sidebar
+            activeLabel={activeLabel}
+            onLabelChange={(label) => {
+              setActiveLabel(label);
+              setSidebarOpen(false); // auto-close on mobile
+            }}
+            onSearch={(q) => {
+              fetchEmails(activeLabel, q);
+              setSidebarOpen(false); // auto-close on mobile
+            }}
+          />
+        </div>
 
-        {/* Email viewer */}
-        <div className={styles.viewer}>
+        {/* Email list container */}
+        <div className={`${styles.listContainer} ${selectedEmail ? styles.listHiddenMobile : ''}`}>
+          <EmailList
+            emails={emails}
+            loading={loadingEmails}
+            selectedId={selectedEmail?.id}
+            onSelect={handleSelectEmail}
+          />
+        </div>
+
+        {/* Email viewer container */}
+        <div className={`${styles.viewer} ${!selectedEmail ? styles.viewerHiddenMobile : ''}`}>
+          {/* Back Button on Mobile */}
+          {selectedEmail && (
+            <button className={styles.backBtnMobile} onClick={() => setSelectedEmail(null)}>
+              ← Back to Inbox
+            </button>
+          )}
           <EmailView email={selectedEmail} />
         </div>
 
@@ -106,10 +133,22 @@ export default function Dashboard() {
                   from: selectedEmail.from,
                 } : {}}
                 onActionComplete={handleAgentAction}
+                onClose={() => setChatOpen(false)}
               />
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Floating Agent Toggle Button (Mobile only when chat is closed) */}
+        {!chatOpen && (
+          <button
+            className={styles.floatingChatBtn}
+            onClick={() => setChatOpen(true)}
+            title="Open AI Agent"
+          >
+            <Sparkles size={20} />
+          </button>
+        )}
       </div>
     </motion.div>
   );

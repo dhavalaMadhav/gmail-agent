@@ -27,6 +27,16 @@ export default function Header({ onToggleChat, chatOpen }) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
     >
+      {/* Mobile Chat Button (Left on Mobile, hidden on Desktop) */}
+      <button
+        id="toggle-chat-btn-mobile"
+        className={`${styles.iconBtn} ${styles.mobileChatBtn} ${chatOpen ? styles.active : ''}`}
+        onClick={onToggleChat}
+        title={chatOpen ? 'Close AI Chat' : 'Open AI Chat'}
+      >
+        {chatOpen ? <MessageSquareOff size={18} /> : <MessageSquare size={18} />}
+      </button>
+
       {/* Brand */}
       <div className={styles.brand}>
         <span className={styles.brandName}>
@@ -43,10 +53,10 @@ export default function Header({ onToggleChat, chatOpen }) {
           <span className={styles.onlineText}>AI Ready</span>
         </div>
 
-        {/* Toggle agent chat */}
+        {/* Toggle agent chat (Desktop only, hidden on Mobile) */}
         <button
           id="toggle-chat-btn"
-          className={styles.iconBtn + (chatOpen ? ' ' + styles.active : '')}
+          className={`${styles.iconBtn} ${styles.desktopChatBtn} ${chatOpen ? styles.active : ''}`}
           onClick={onToggleChat}
           title={chatOpen ? 'Close AI Chat' : 'Open AI Chat'}
         >
@@ -71,7 +81,7 @@ export default function Header({ onToggleChat, chatOpen }) {
             </div>
             <button
               id="logout-btn"
-              className={styles.iconBtn}
+              className={`${styles.iconBtn} ${styles.logoutBtn}`}
               onClick={handleLogout}
               title="Logout"
             >

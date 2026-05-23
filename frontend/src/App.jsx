@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect, createContext, useContext } from 'react';
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import axios from 'axios';
@@ -41,9 +42,10 @@ function App() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
-        <Route path="*" element={<Navigate to={user ? '/dashboard' : '/login'} />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </AuthContext.Provider>
   );

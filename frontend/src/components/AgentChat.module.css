@@ -55,6 +55,24 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.closeBtn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
 /* Sleek flat monochromatic System Status segment */
 .systemStatusCard {
   display: flex;
@@ -368,6 +386,12 @@
   padding: 0 20px 16px 20px;
 }
 
+@media (max-width: 768px) {
+  .quickPrompts {
+    display: none !important;
+  }
+}
+
 .quickPrompt {
   display: flex;
   align-items: center;
@@ -462,4 +486,75 @@
   color: var(--text-muted);
   cursor: not-allowed;
   box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    width: 100% !important;
+    border-left: none !important;
+  }
+  
+  .panelHeader {
+    padding: 12px 16px !important;
+  }
+  
+  .systemStatusCard {
+    margin: 8px 12px !important;
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  
+  .statusMetrics {
+    padding-top: 6px !important;
+  }
+  
+  .contextBar {
+    margin: 0 12px 8px 12px !important;
+    padding: 8px 12px !important;
+  }
+  
+  .messages {
+    padding: 12px 12px !important;
+    gap: 12px !important;
+  }
+  
+  .message {
+    max-width: 90% !important;
+  }
+  
+  .msgText {
+    font-size: 12.5px !important;
+    padding: 8px 12px !important;
+    line-height: 1.4 !important;
+  }
+  
+  .inputArea {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  
+  .textarea {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    height: 36px !important;
+    border-radius: 8px !important;
+  }
+  
+  .sendBtn {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 8px !important;
+  }
+  
+  .emailCard {
+    padding: 6px 8px !important;
+  }
+  
+  .emailCardSubject {
+    font-size: 11px !important;
+  }
+  
+  .emailCardSnippet {
+    font-size: 10px !important;
+  }
 }

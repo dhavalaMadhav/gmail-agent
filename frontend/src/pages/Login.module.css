@@ -142,3 +142,40 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+@media (max-width: 768px) {
+  .logo {
+    display: none !important;
+  }
+  .hero {
+    display: none !important;
+  }
+  .card {
+    padding: 24px !important;
+    margin: 16px !important;
+    border-radius: 16px !important;
+    max-width: 90% !important;
+  }
+  .features {
+    margin-bottom: 20px !important;
+    padding: 16px !important;
+    gap: 12px !important;
+  }
+  .featureItem {
+    gap: 10px !important;
+  }
+  .googleBtn {
+    padding: 12px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+  .disclaimer {
+    margin-top: 14px !important;
+  }
+  .container {
+    padding: 16px !important;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+  }
+}
