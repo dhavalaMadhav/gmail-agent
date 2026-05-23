@@ -34,11 +34,18 @@ app.use(
 );
 
 // ─── Session Middleware (MUST come before passport) ──────────────────────────
+const isProd = process.env.NODE_ENV === 'production';
+
+if (isProd) {
+  app.set('trust proxy', 1);
+}
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'fallback-secret',
     resave: false,
     saveUninitialized: false,
+    proxy: isProd,
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
       collectionName: 'sessions',
@@ -47,8 +54,8 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
       httpOnly: true,
-      secure: false,                   // ← MUST be false on localhost (no HTTPS)
-      sameSite: 'lax',                 // ← allows redirect-based OAuth cookies
+      secure: isProd,                  // ← MUST be false on localhost (no HTTPS)
+      sameSite: isProd ? 'none' : 'lax', // ← cross-site cookies in prod, lax locally
     },
   })
 );
